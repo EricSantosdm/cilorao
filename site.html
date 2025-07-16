@@ -3,465 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonas Cilorão - Corretor de Imóveis</title>
-    <!-- Bootstrap 5 -->
+    <title>Excelência Imóveis - Sua casa dos sonhos</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0d6efd;
-            --secondary: #6c757d;
-            --accent: #ff6b35;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --verde-escuro: #0d663b;
+            --verde-medio: #1d965a;
+            --verde-claro: #2dbf7a;
+            --verde-bem-claro: #a2ffd2;
+            --verde-fundo: #e6fff2;
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            padding-top: 70px; /* Espaço para o menu fixo */
         }
         
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-        
-        /* Navbar Flutuante */
         .navbar {
-            background-color: rgba(255, 255, 255, 0.95) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            transition: var(--transition);
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .navbar-brand img {
-            height: 50px;
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
         }
         
         .nav-link {
-            color: var(--dark) !important;
+            color: rgba(255,255,255,0.85) !important;
             font-weight: 500;
-            margin: 0 10px;
-            transition: var(--transition);
+            margin: 0 8px;
+            transition: all 0.3s ease;
             position: relative;
         }
         
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: var(--transition);
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
         }
         
-        .nav-link:hover:after {
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
             width: 100%;
         }
         
-        .navbar .btn-primary {
-            padding: 8px 20px;
-            font-weight: 600;
-            border-radius: 30px;
-        }
-        
-        /* Hero Slider */
-        .hero-slider {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .carousel-item {
-            height: 100vh;
+        .hero-section {
+            background: linear-gradient(rgba(13, 102, 59, 0.8), rgba(13, 102, 59, 0.9)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-        }
-        
-        .carousel-item:nth-child(1) {
-            background-image: linear-gradient(rgba(0,0,0,0.4), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-        }
-        
-        .carousel-item:nth-child(2) {
-            background-image: linear-gradient(rgba(0,0,0,0.4), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-        }
-        
-        .carousel-item:nth-child(3) {
-            background-image: linear-gradient(rgba(0,0,0,0.4), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-        }
-        
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            color: white;
+            padding: 100px 0;
             text-align: center;
-            color: white;
-            width: 80%;
-            max-width: 900px;
-            z-index: 2;
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        }
-        
-        .btn-hero {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 12px 35px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 30px;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .btn-hero:hover {
-            background: #e55a2c;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-        }
-        
-        /* Seções de Conteúdo */
-        section {
-            padding: 80px 0;
         }
         
         .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
             position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--verde-escuro);
         }
         
-        .section-title h2:after {
+        .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--verde-claro), var(--verde-medio));
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .section-title.text-center::after {
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
         }
         
-        .dream-section {
-            background-color: #f8f9fa;
+        .about-section {
+            background-color: white;
+            padding: 80px 0;
         }
         
-        .dream-content {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
+        .properties-section {
+            background-color: var(--verde-fundo);
+            padding: 80px 0;
         }
         
-        .dream-content:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .dream-content h3 {
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        
-        .dream-content p {
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-        
-        .dream-image {
+        .card-property {
+            border: none;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            height: 100%;
-        }
-        
-        .dream-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .dream-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Grid de Imóveis */
-        .property-card {
-            border-radius: 10px;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            background: white;
+            height: 100%;
         }
         
-        .property-card:hover {
+        .card-property:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 20px;
         }
         
         .property-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .property-img img {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .property-card:hover .property-img img {
-            transform: scale(1.1);
-        }
-        
-        .property-info {
-            padding: 25px;
-        }
-        
-        .property-price {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .property-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .property-location {
-            color: var(--secondary);
+            border-radius: 5px;
             margin-bottom: 15px;
         }
         
-        .property-features {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+            margin: 15px 0;
+        }
+        
+        .btn-details {
+            background: linear-gradient(to right, var(--verde-claro), var(--verde-medio));
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
             margin-top: 15px;
         }
         
-        .feature {
+        .btn-details:hover {
+            background: linear-gradient(to right, var(--verde-medio), var(--verde-escuro));
+            transform: scale(1.05);
+        }
+        
+        .features-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .feature-box {
             text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
         }
         
-        .feature i {
-            color: var(--primary);
-            margin-bottom: 5px;
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
-        /* WhatsApp Flutuante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s infinite;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        
-        .whatsapp-float i {
-            font-size: 32px;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-logo {
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--verde-claro);
             margin-bottom: 20px;
         }
         
-        .footer-logo img {
-            height: 60px;
+        .testimonials-section {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            padding: 80px 0;
+            color: white;
         }
         
-        .footer-social a {
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .contact-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .contact-info {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            color: white;
+            border-radius: 10px;
+            padding: 40px;
+            height: 100%;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: var(--verde-bem-claro);
+        }
+        
+        .footer {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .social-icon {
             display: inline-block;
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             text-align: center;
             line-height: 40px;
-            color: white;
-            margin-right: 10px;
-            transition: var(--transition);
+            margin: 0 5px;
+            transition: all 0.3s ease;
         }
         
-        .footer-social a:hover {
-            background: var(--accent);
+        .social-icon:hover {
+            background-color: var(--verde-bem-claro);
             transform: translateY(-5px);
         }
         
-        .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             width: 50px;
-            height: 2px;
-            background: var(--accent);
-        }
-        
-        .footer-links a {
-            display: block;
-            color: #bbb;
-            margin-bottom: 12px;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-        
-        .footer-contact li {
-            margin-bottom: 15px;
+            height: 50px;
+            background: linear-gradient(to right, var(--verde-claro), var(--verde-medio));
+            color: white;
+            border-radius: 50%;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .footer-contact i {
-            color: var(--accent);
-            margin-right: 10px;
-            margin-top: 5px;
+        .back-to-top.show {
+            opacity: 1;
         }
         
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            margin-top: 40px;
+        .property-icon {
+            font-size: 1.5rem;
+            color: var(--verde-claro);
+            margin-right: 5px;
+        }
+        
+        .highlight {
+            color: var(--verde-claro);
+            font-weight: 600;
+        }
+        
+        .location {
+            background-color: var(--verde-fundo);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
             text-align: center;
-            color: #aaa;
         }
         
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
+        .property-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
         }
         
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.3rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
+        .property-feature i {
+            width: 24px;
+            text-align: center;
+            margin-right: 8px;
+            color: var(--verde-claro);
         }
         
-        @media (max-width: 576px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .navbar-brand img {
-                height: 40px;
-            }
+        .badge-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .badge-venda {
+            background: linear-gradient(to right, var(--verde-claro), var(--verde-medio));
+            color: white;
+        }
+        
+        .badge-aluguel {
+            background: linear-gradient(to right, #0d3b66, #1d6a96);
+            color: white;
+        }
+        
+        .img-container {
+            position: relative;
         }
     </style>
 </head>
 <body>
-    <!-- WhatsApp Flutuante -->
-    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <!-- Navbar Flutuante -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- Menu Fixo -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iNTAiPjx0ZXh0IHg9IjAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiMwMDY2Y2MiPkpvbmFzIENpbG9yw6NvPC90ZXh0Pjwvc3ZnPg==" alt="Jonas Cilorão">
+                <i class="fas fa-home me-2"></i>Excelência Imóveis
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -469,7 +342,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Início</a>
+                        <a class="nav-link active" href="#inicio">Início</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#sobre">Sobre</a>
@@ -478,383 +351,570 @@
                         <a class="nav-link" href="#imoveis">Imóveis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#terrenos">Terrenos</a>
+                        <a class="nav-link" href="#diferenciais">Diferenciais</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contato">Contato</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary" href="#contato">Agende uma Visita</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <!-- Hero Slider -->
-    <section class="hero-slider">
-        <div id="carouselHero" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="2"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="hero-content">
-                        <h1>Encontre o Imóvel dos Seus Sonhos</h1>
-                        <p>Com mais de 15 anos de experiência, Jonas Cilorão oferece o melhor atendimento e assessoria imobiliária para encontrar a propriedade perfeita para você e sua família.</p>
-                        <a href="#imoveis" class="btn btn-hero">Ver Imóveis</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="hero-content">
-                        <h1>Terrenos em Localizações Privilegiadas</h1>
-                        <p>Oportunidades únicas de investimento em terrenos com a melhor valorização do mercado. Conheça nossos lotes disponíveis.</p>
-                        <a href="#terrenos" class="btn btn-hero">Ver Terrenos</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="hero-content">
-                        <h1>Soluções Imobiliárias Personalizadas</h1>
-                        <p>Seja para compra, venda ou locação, oferecemos soluções completas e personalizadas para atender todas as suas necessidades imobiliárias.</p>
-                        <a href="#contato" class="btn btn-hero">Entre em Contato</a>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-4">Encontre o imóvel dos seus sonhos</h1>
+                    <p class="lead mb-5">Mais de 20 anos transformando sonhos em realidade</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#imoveis" class="btn btn-lg btn-light me-3 px-4 py-2">Ver Imóveis</a>
+                        <a href="#contato" class="btn btn-lg btn-outline-light px-4 py-2">Contato</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Seção Realize Seu Sonho -->
-    <section id="sobre" class="dream-section">
+
+    <!-- Sobre -->
+    <section id="sobre" class="about-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Realize seu sonho de casa própria</h2>
-            </div>
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="dream-content">
-                        <h3>O caminho para sua nova casa começa aqui</h3>
-                        <p>Com a assessoria especializada de Jonas Cilorão, você encontra o imóvel perfeito para realizar o sonho da casa própria. Trabalhamos com uma seleção criteriosa de casas e apartamentos nas melhores localizações.</p>
-                        <p>Nossa missão é simplificar o processo de compra e venda de imóveis, oferecendo transparência, segurança e todo o suporte necessário para que você tome a melhor decisão.</p>
-                        <div class="d-flex mt-4">
-                            <div class="me-4">
-                                <h4 class="text-primary">15+</h4>
-                                <p>Anos de Experiência</p>
-                            </div>
-                            <div class="me-4">
-                                <h4 class="text-primary">500+</h4>
-                                <p>Imóveis Vendidos</p>
-                            </div>
-                            <div>
-                                <h4 class="text-primary">98%</h4>
-                                <p>Clientes Satisfeitos</p>
-                            </div>
-                        </div>
+                    <h2 class="section-title">Sobre Nós</h2>
+                    <p class="lead">A Excelência Imóveis é uma imobiliária comprometida em encontrar o lar perfeito para você e sua família.</p>
+                    <p>Com sede em São Paulo, temos como missão oferecer o melhor atendimento e as melhores oportunidades do mercado imobiliário.</p>
+                    <p>Nossa equipe é formada por corretores experientes e especializados, com amplo conhecimento do mercado para garantir a melhor negociação.</p>
+                    <div class="location">
+                        <p><i class="fas fa-map-marker-alt highlight me-2"></i><strong>São Paulo - SP</strong></p>
+                        <p>Transformando sonhos em endereços</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="dream-image">
-                        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Realize seu sonho">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="feature-box">
+                                <div class="feature-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4>Imóveis Selecionados</h4>
+                                <p>Propriedades cuidadosamente escolhidas para atender às suas necessidades.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-box">
+                                <div class="feature-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h4>Negociação Segura</h4>
+                                <p>Todos os processos realizados com total transparência e segurança jurídica.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-box">
+                                <div class="feature-icon">
+                                    <i class="fas fa-search-dollar"></i>
+                                </div>
+                                <h4>Avaliação Profissional</h4>
+                                <p>Precificação justa e competitiva para compradores e vendedores.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-box">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h4>Consultoria Especializada</h4>
+                                <p>Suporte personalizado em todas as etapas da compra ou venda.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Seção de Imóveis -->
+
+    <!-- Imóveis -->
     <section id="imoveis" class="properties-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Casas e Apartamentos</h2>
-                <p class="text-muted">Conheça nossas melhores oportunidades</p>
-            </div>
+            <h2 class="section-title text-center mb-5">Imóveis em Destaque</h2>
+            <p class="text-center mb-5 lead">Encontre a propriedade perfeita para você</p>
+            
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
-                        <div class="property-img">
-                            <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casa Moderna">
+                <!-- Imóvel 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Casa moderna" class="property-img">
+                            <span class="badge-status badge-venda">Venda</span>
                         </div>
-                        <div class="property-info">
-                            <div class="property-price">R$ 850.000</div>
-                            <h4 class="property-title">Casa Moderna com Piscina</h4>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt me-2"></i> Jardim Europa, São Paulo
-                            </div>
-                            <p class="property-description">Casa espaçosa com 4 quartos, 3 banheiros, piscina e área gourmet.</p>
+                        <div class="card-body">
+                            <h4>Residencial Moderno</h4>
+                            <p>Excelente casa com 3 quartos, 2 banheiros e área de lazer completa.</p>
                             <div class="property-features">
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-bed"></i>
-                                    <div>4 Quartos</div>
+                                    <span>3 Quartos</span>
                                 </div>
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-bath"></i>
-                                    <div>3 Banheiros</div>
+                                    <span>2 Banheiros</span>
                                 </div>
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-car"></i>
-                                    <div>2 Garagens</div>
+                                    <span>2 Vagas</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>180m²</span>
                                 </div>
                             </div>
+                            <div class="price">R$ 850.000</div>
+                            <button class="btn-details">Ver Detalhes</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
-                        <div class="property-img">
-                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartamento de Luxo">
+                <!-- Imóvel 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apartamento" class="property-img">
+                            <span class="badge-status badge-aluguel">Aluguel</span>
                         </div>
-                        <div class="property-info">
-                            <div class="property-price">R$ 1.200.000</div>
-                            <h4 class="property-title">Apartamento de Luxo</h4>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt me-2"></i> Moema, São Paulo
-                            </div>
-                            <p class="property-description">Apartamento com vista panorâmica, 3 suítes, varanda gourmet e lazer completo.</p>
+                        <div class="card-body">
+                            <h4>Apartamento Premium</h4>
+                            <p>Condomínio fechado com piscina, academia e segurança 24h.</p>
                             <div class="property-features">
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-bed"></i>
-                                    <div>3 Quartos</div>
+                                    <span>2 Quartos</span>
                                 </div>
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-bath"></i>
-                                    <div>4 Banheiros</div>
+                                    <span>2 Banheiros</span>
                                 </div>
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-car"></i>
-                                    <div>3 Garagens</div>
+                                    <span>1 Vaga</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>90m²</span>
                                 </div>
                             </div>
+                            <div class="price">R$ 3.500/mês</div>
+                            <button class="btn-details">Ver Detalhes</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
-                        <div class="property-img">
-                            <img src="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casa de Campo">
+                <!-- Imóvel 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Casa com piscina" class="property-img">
+                            <span class="badge-status badge-venda">Venda</span>
                         </div>
-                        <div class="property-info">
-                            <div class="property-price">R$ 1.950.000</div>
-                            <h4 class="property-title">Casa de Campo com Vista</h4>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt me-2"></i> Campos do Jordão, SP
-                            </div>
-                            <p class="property-description">Propriedade com 5 quartos, área de lazer completa e vista para as montanhas.</p>
+                        <div class="card-body">
+                            <h4>Casa com Piscina</h4>
+                            <p>Propriedade espaçosa com jardim, churrasqueira e área gourmet.</p>
                             <div class="property-features">
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-bed"></i>
-                                    <div>5 Quartos</div>
+                                    <span>4 Quartos</span>
                                 </div>
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-bath"></i>
-                                    <div>4 Banheiros</div>
+                                    <span>3 Banheiros</span>
                                 </div>
-                                <div class="feature">
+                                <div class="property-feature">
                                     <i class="fas fa-car"></i>
-                                    <div>4 Garagens</div>
+                                    <span>3 Vagas</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>280m²</span>
                                 </div>
                             </div>
+                            <div class="price">R$ 1.250.000</div>
+                            <button class="btn-details">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imóvel 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cobertura" class="property-img">
+                            <span class="badge-status badge-venda">Venda</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Cobertura de Luxo</h4>
+                            <p>Vista panorâmica, acabamentos premium e lazer completo.</p>
+                            <div class="property-features">
+                                <div class="property-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>3 Quartos</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>3 Banheiros</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>2 Vagas</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>210m²</span>
+                                </div>
+                            </div>
+                            <div class="price">R$ 2.100.000</div>
+                            <button class="btn-details">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imóvel 5 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Casa compacta" class="property-img">
+                            <span class="badge-status badge-aluguel">Aluguel</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Casa Compacta</h4>
+                            <p>Ideal para solteiros ou casais, próxima ao metrô e comércio.</p>
+                            <div class="property-features">
+                                <div class="property-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>2 Quartos</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>1 Banheiro</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>1 Vaga</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>65m²</span>
+                                </div>
+                            </div>
+                            <div class="price">R$ 2.200/mês</div>
+                            <button class="btn-details">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imóvel 6 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sobrado" class="property-img">
+                            <span class="badge-status badge-venda">Venda</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Sobrado Moderno</h4>
+                            <p>Pronto para morar com acabamento de alto padrão.</p>
+                            <div class="property-features">
+                                <div class="property-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>3 Quartos</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>3 Banheiros</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>2 Vagas</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>150m²</span>
+                                </div>
+                            </div>
+                            <div class="price">R$ 750.000</div>
+                            <button class="btn-details">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imóvel 7 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Casa de campo" class="property-img">
+                            <span class="badge-status badge-venda">Venda</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Casa de Campo</h4>
+                            <p>Refúgio tranquilo com muito espaço e natureza ao redor.</p>
+                            <div class="property-features">
+                                <div class="property-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>4 Quartos</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>3 Banheiros</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>4 Vagas</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>420m²</span>
+                                </div>
+                            </div>
+                            <div class="price">R$ 1.950.000</div>
+                            <button class="btn-details">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imóvel 8 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-property">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apartamento compacto" class="property-img">
+                            <span class="badge-status badge-aluguel">Aluguel</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Kitnet Mobiliada</h4>
+                            <p>Perfeito para estudantes ou profissionais em início de carreira.</p>
+                            <div class="property-features">
+                                <div class="property-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>1 Quarto</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>1 Banheiro</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>1 Vaga</span>
+                                </div>
+                                <div class="property-feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>45m²</span>
+                                </div>
+                            </div>
+                            <div class="price">R$ 1.800/mês</div>
+                            <button class="btn-details">Ver Detalhes</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Seção de Terrenos -->
-    <section id="terrenos" class="properties-section bg-light">
+
+    <!-- Diferenciais -->
+    <section id="diferenciais" class="features-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Terrenos Disponíveis</h2>
-                <p class="text-muted">Invista em ótimas localizações</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
-                        <div class="property-img">
-                            <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terreno Residencial">
+            <h2 class="section-title text-center mb-5">Por que escolher nossa imobiliária?</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="property-info">
-                            <div class="property-price">R$ 320.000</div>
-                            <h4 class="property-title">Terreno Residencial</h4>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt me-2"></i> Alphaville, Barueri
-                            </div>
-                            <p class="property-description">Terreno plano de 500m² em condomínio fechado com infraestrutura completa.</p>
-                            <div class="property-features">
-                                <div class="feature">
-                                    <i class="fas fa-ruler-combined"></i>
-                                    <div>500m²</div>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-map"></i>
-                                    <div>Plano</div>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-tree"></i>
-                                    <div>Área Verde</div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4>Segurança Jurídica</h4>
+                        <p>Todos os processos com acompanhamento jurídico especializado para garantir transparência.</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
-                        <div class="property-img">
-                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terreno Comercial">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-search-location"></i>
                         </div>
-                        <div class="property-info">
-                            <div class="property-price">R$ 1.100.000</div>
-                            <h4 class="property-title">Terreno Comercial</h4>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt me-2"></i> Vila Olímpia, São Paulo
-                            </div>
-                            <p class="property-description">Terreno de 300m² em região de alto valorização, ideal para construção comercial.</p>
-                            <div class="property-features">
-                                <div class="feature">
-                                    <i class="fas fa-ruler-combined"></i>
-                                    <div>300m²</div>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-map"></i>
-                                    <div>Esquina</div>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-building"></i>
-                                    <div>Comercial</div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4>Ampla Cobertura</h4>
+                        <p>Atuamos em toda a região metropolitana com os melhores imóveis do mercado.</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
-                    <div class="property-card">
-                        <div class="property-img">
-                            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terreno com Vista">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-tag"></i>
                         </div>
-                        <div class="property-info">
-                            <div class="property-price">R$ 780.000</div>
-                            <h4 class="property-title">Terreno com Vista para o Mar</h4>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt me-2"></i> Guarujá, Litoral SP
-                            </div>
-                            <p class="property-description">Terreno de 400m² com vista panorâmica para o mar e infraestrutura completa.</p>
-                            <div class="property-features">
-                                <div class="feature">
-                                    <i class="fas fa-ruler-combined"></i>
-                                    <div>400m²</div>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-water"></i>
-                                    <div>Vista Mar</div>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-umbrella-beach"></i>
-                                    <div>Próximo à Praia</div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4>Melhores Preços</h4>
+                        <p>Negociação direta com proprietários para oferecer as melhores condições.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Contato -->
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Entre em Contato</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="contact-info">
+                        <h3 class="mb-4"><i class="fas fa-map-marker-alt contact-icon"></i> Nossa Localização</h3>
+                        <p class="mb-4">Av. Paulista, 1000 - Bela Vista<br>São Paulo - SP, 01310-000</p>
+                        
+                        <h3 class="mb-4"><i class="fas fa-phone contact-icon"></i> Telefones</h3>
+                        <p class="mb-4">(11) 3333-4444<br>(11) 9 8888-7777</p>
+                        
+                        <h3 class="mb-4"><i class="fas fa-envelope contact-icon"></i> Email</h3>
+                        <p class="mb-4">contato@excelenciaimoveis.com.br</p>
+                        
+                        <h3 class="mb-4"><i class="fas fa-clock contact-icon"></i> Horário de Funcionamento</h3>
+                        <p>Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 13h</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="bg-light p-4 rounded">
+                        <h3 class="mb-4">Agende uma visita</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Nome completo">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Telefone">
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select">
+                                    <option selected>Tipo de interesse</option>
+                                    <option>Comprar imóvel</option>
+                                    <option>Alugar imóvel</option>
+                                    <option>Vender imóvel</option>
+                                    <option>Consultoria</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Informe o imóvel de interesse ou sua mensagem"></textarea>
+                            </div>
+                            <button type="submit" class="btn-details w-100">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contato">
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="footer-logo">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iNTAiPjx0ZXh0IHg9IjAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIj5Kb25hcyBDaWxvcuyjbyA8L3RleHQ+PC9zdmc+" alt="Jonas Cilorão">
-                    </div>
-                    <p class="mb-4">Especialista em soluções imobiliárias com excelência e comprometimento.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4><i class="fas fa-home me-2"></i>Excelência Imóveis</h4>
+                    <p>Sua parceira na busca pelo lar perfeito<br>Desde 2003</p>
                 </div>
                 
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">Links Rápidos</h5>
-                    <div class="footer-links">
-                        <a href="#">Início</a>
-                        <a href="#sobre">Sobre</a>
-                        <a href="#imoveis">Imóveis</a>
-                        <a href="#terrenos">Terrenos</a>
-                        <a href="#contato">Contato</a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">Tipos de Imóveis</h5>
-                    <div class="footer-links">
-                        <a href="#">Casas</a>
-                        <a href="#">Apartamentos</a>
-                        <a href="#">Terrenos</a>
-                        <a href="#">Comerciais</a>
-                        <a href="#">Luxo</a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-4">
-                    <h5 class="footer-title">Contato</h5>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Av. Paulista, 1000<br>São Paulo, SP</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>(11) 9999-9999</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>contato@jonascilorão.com.br</span>
-                        </li>
-                        <li>
-                            <i class="fab fa-whatsapp"></i>
-                            <span>(11) 99999-9999</span>
-                        </li>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4>Links Rápidos</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-white text-decoration-none">Início</a></li>
+                        <li><a href="#sobre" class="text-white text-decoration-none">Sobre</a></li>
+                        <li><a href="#imoveis" class="text-white text-decoration-none">Imóveis</a></li>
+                        <li><a href="#contato" class="text-white text-decoration-none">Contato</a></li>
                     </ul>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4>Redes Sociais</h4>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2023 Jonas Cilorão Corretor de Imóveis. Todos os direitos reservados.</p>
+            <hr class="mt-4 mb-4" style="background-color: rgba(255,255,255,0.2);">
+            
+            <div class="text-center">
+                <p>&copy; 2023 Excelência Imóveis. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
-    
+
+    <!-- Botão Voltar ao Topo -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // Efeito de rolagem suave
+        // Scroll suave para âncoras
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                
+                // Atualizar menu ativo
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
             });
         });
         
-        // Mudar navbar no scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.padding = '10px 0';
-                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        // Botão voltar ao topo
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
             } else {
-                navbar.style.padding = '15px 0';
-                navbar.style.boxShadow = 'none';
+                backToTopButton.classList.remove('show');
             }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Atualizar menu ativo ao rolar
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
